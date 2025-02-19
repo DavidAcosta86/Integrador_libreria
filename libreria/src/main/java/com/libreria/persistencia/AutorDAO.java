@@ -81,4 +81,16 @@ public class AutorDAO {
             em.close();
         }
     }
+
+    public Autor buscarPorNombre(String nombre) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createQuery("SELECT a FROM Autor a WHERE a.nombre = :nombre", Autor.class)
+                    .setParameter("nombre", nombre)
+                    .getSingleResult();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
 }

@@ -59,4 +59,7 @@ public class AutorServicio {
 
     }
 
+    public Autor buscarAutorPorNombre(String nombre) {
+        return autorDao.buscarPorNombre(nombre);
+    }
 }
