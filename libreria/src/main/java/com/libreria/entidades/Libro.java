@@ -1,5 +1,6 @@
 package com.libreria.entidades;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 
@@ -27,11 +28,11 @@ public class Libro {
     @Column(columnDefinition = "BOOLEAN DEFAULT true")
     private boolean alta = true;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "autor_id", nullable = false)
     private Autor autor;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "editorial_id", nullable = false)
     private Editorial editorial;
 

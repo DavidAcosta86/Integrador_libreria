@@ -28,12 +28,12 @@ public class Application {
         Autor autor = new Autor("Gabriel García Márquez");
         Editorial editorial = new Editorial("Editorial Sudamericana");
 
-        // Guardar Autor y Editorial primero
+        // // Guardar Autor y Editorial primero
         try {
             autorServicio.crearAutor(autor.getNombre());
 
         } catch (Exception e) {
-            // TODO: handle exception
+            // // TODO: handle exception
         }
         editorialServicio.crearEditorial(editorial.getNombre());
         pruebaLibro(autor, editorial);
@@ -45,7 +45,8 @@ public class Application {
 
         try {
             libroServicio.crearLibro(1234567890L, "Cien años de soledad", 1967, 100, autor, editorial);
-            System.out.println("Libro creado exitosamente!");
+            System.out.println("---------------------------------------------------");
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -54,33 +55,44 @@ public class Application {
         libroServicio.listarLibros();
         System.out.println("---------------------------------------------------");
 
-        // Modificar un libro (por ISBN)
+        // // Modificar un libro (por ISBN)
         libroServicio.modificarLibro(1234567890L, "Cien años de soledad (Edición Especial)", 1967, 150);
         libroServicio.listarLibros();
         System.out.println("---------------------------------------------------");
 
-        // Buscar libro por título
+        // // Buscar libro por título
         List<Libro> librosPorTitulo = libroServicio.buscarLibroPorTitulo("Cien años de soledad");
         if (librosPorTitulo != null) {
+            System.out.println("coincidencia hallada");
             librosPorTitulo.forEach(libro -> System.out.println(libro));
         }
         System.out.println("---------------------------------------------------");
 
-        // Buscar libro por autor
+        // // Buscar libro por autor
         List<Libro> librosPorAutor = libroServicio.buscarLibroPorAutor(autor);
         if (librosPorAutor != null) {
-            librosPorAutor.forEach(libro -> System.out.println(libro));
+            System.out.println("Coincidencia hallada, libros de: " + autor.getNombre());
+            for (Libro libro : librosPorAutor) {
+                System.out.println(libro);
+            }
+        } else {
+            System.out.println("no se hallo al autor");
         }
         System.out.println("---------------------------------------------------");
 
-        // Buscar libro por editorial
+        // // Buscar libro por editorial
         List<Libro> librosPorEditorial = libroServicio.buscarLibroPorEditorial(editorial);
         if (librosPorEditorial != null) {
-            librosPorEditorial.forEach(libro -> System.out.println(libro));
+            System.out.println("Los libros de la editorial " + editorial.getNombre() + " son:");
+            for (Libro libro : librosPorEditorial) {
+                System.out.println(libro.toString());
+            }
+        } else {
+            System.out.println("no se hallaron libros de la editorial " + editorial.getNombre());
         }
         System.out.println("---------------------------------------------------");
 
-        // Eliminar un libro lógicamente (por ISBN)
+        // // Eliminar un libro lógicamente (por ISBN)
         libroServicio.eliminarLibroLogico(1234567890L);
         libroServicio.listarLibros();
         System.out.println("---------------------------------------------------");
