@@ -84,10 +84,11 @@ No ingresar datos duplicados.
     ☻ Entidades
     ☻ Persistencias
     ☻ Servicios
-
+    ☻ Metodos sencillos para comprobar el funcionamiento
 ### Falta
     ♣ Validaciones
     ♣ Control de bugs y exepciones
+    ♣ Menu para probar las funcionalidades
 
     
 
